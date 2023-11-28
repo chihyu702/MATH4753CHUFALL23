@@ -5,8 +5,7 @@
 #' @return A vector of squared components
 #' @export
 #'
-#' @examples
-#' myfunction(1:10)
+#' @examples myfunction(1:10)
 myfunction <- function(x){
   x^2
 }

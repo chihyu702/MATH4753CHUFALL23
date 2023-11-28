@@ -1,0 +1,14 @@
+#' Fire damage
+#'
+#' A data set collected concerning home damage from fire
+#'
+#' @usage fire
+#'
+#' @format A dat frame with 15 rows and 2 variables:
+#' \describe{
+#'    \item{ DISRANCE}{distance from fire station in miles}
+#'    \item{DAMAGE}{X 1000 dollars in damage}
+#' }
+#' @source {https://www.routledge.com/statistic-for-Engineering-and-the-science/Mendenhall-sincich/p/book/9781498728850}
+
+"fire"

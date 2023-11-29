@@ -2,15 +2,21 @@
 #'
 #' maximum likelihood function for repeated sampling from same distribution
 #'
-#' @param lfun
-#' @param x
-#' @param param
-#' @param ...
+#' @param lfun the likelihood function
+#' @param x vector of the observe data
+#' @param param A numeric vector of parameter values over which the likelihood
+#'              function will be evaluated
+#' @param ... additional parameters
 #'
-#' @return
+#' @importFrom graphics points
+#' @importFrom graphics abline
+#' @importFrom graphics axis
+#'
+#' @return list relate to the MLE
 #' @export
 #'
-#' @examples mymaxlik(x=c(9,9,1,9,9,9),param=seq(0,1,length=1000),lfun=logbin,xlab=expression(pi),main="Binomial",cex.main=2)
+#' @examples mymaxlik(x=c(9,9,1,9,9,9),param=seq(0,1,length=1000),
+#'           lfun=logbin,xlab=expression(pi),main="Binomial",cex.main=2)
 mymaxlik=function(lfun,x,param,...){
   # how many param values are there?
   np=length(param)

@@ -1,0 +1,103 @@
+---
+title: "What the package does"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{What the package does}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753CHUFALL2023)
+```
+
+
+# Introduction
+
+Rock and Roll!
+
+This R package named "MATH4753CHUFALL2023" contains the function we use in MATH4753 Fall 2023  
+Here is the expiation of 4 functions from this package
+
+## nticket
+This is the function use in project.  
+
+This function aim to find the optimization number of ticket to sell to avoid overbooking problem in the airline industry. Moreover, in order to maximum the profit, this function try to balance between maximum occupancy and minimum risk of overbooking and setting it as the goal.
+
+Three parameter is required in this function:   
+1. N: number of seats on the flight  
+2. gamma: probability of overbooking  
+3. p: probability of a passenger will show  
+
+And this function use two method:  
+1. appropriate discrete distribution  
+2. normal approximation  
+
+```{r}
+MATH4753CHUFALL2023::ntickets(200,0.02, 0.95)
+```
+
+This function outputs two graphs to visualize the relation between the goal and the ticket sold. The point where lines intersect in each graph is the recommended number of tickets to be sold.  
+The first graph with a red line uses the appropriate discrete distribution so that the line is not continuous and the optimized ticket is an integer. And the second graph with a blue line uses normal approximation and the output is more accurate.
+
+## myboot2
+
+This is the function in lab 9  
+
+The function does the bootstrap analysis on a given dataset. It resamples the data with replacement and then estimates the distribution of the required statistic as well as calculates a bootstrap confidence interval.
+
+x parameter is the required in this function which represent the vector/dataset we want to analysis. Other parameters has their own default and also able to adjust. Some important parameter:  
+fun: the statistical function going to apply. The default is "mean".  
+alpha: the significance level to calculate the confidence interval. The default is 0.05, and calculate 95% confidence interval  
+
+```{r}
+data(fire)
+MATH4753CHUFALL2023::myboot2(x=rnorm(50), fun = "mean", alpha = 0.05, xlab = "mean", iter = 10000)
+```
+
+This function output a graph with distribution and with the significant point estimate and confidence. 
+
+
+## mybin
+
+This is a function we use in lab 2
+
+This function visualizes the outcomes of simulated trial behavior under different parameters. This could be used for the risk assessment where the outcome is binary.
+
+Three parameter is required in this function:   
+1. iter: number of iterations for the binomial simulation  
+2. n: sample size for each trial
+3. p: probability of success in each binomial trial
+
+```{r}
+MATH4753CHUFALL2023::mybin(iter = 100, n = 20, p = 0.8)
+```
+
+This function output a barplot of the proportions of successes and a table of success counts. And it also returns the proportion of each possible outcome which is in the list so that it is easier to compared and do the further analysis.
+
+## mymaxlik
+
+This is a function from lab 10.  
+
+This is a maximum likelihood function for repeated sampling from the same distribution. It aims to derive the model parameters that are most likely to produce the observed data.
+
+There are three main and required parameter for this function:  
+1. x: the vector of observed data  
+2. lfun: the likelihood function  
+3. param: the vector that will be evaluated  
+
+```{r}
+MATH4753CHUFALL2023::mymaxlik(x=c(3,3,4,3,4,5,5,4),param=seq(0,1,length=1000),lfun=MATH4753CHUFALL2023::logbin,xlab=expression(pi),main="Binomial",cex.main=2)
+```
+
+This function will return a list and a graph. The graph visualize the curve of likelihood function and the point it indicate is the maximum, as well as MLE too. The list contain value relate to this point: i, the index of the param vector; parami, the actual value from the param; yi, the value of the function when at MLE; slope: the slope around the point.
+
+
+

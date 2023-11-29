@@ -1,6 +1,10 @@
 #' myci
 #'
-#' @param x
+#'Calculate 95% Confidence Interval for the Mean
+#'
+#' @param x vector
+#'
+#' @importFrom stats qt
 #'
 #' @return
 #' @export

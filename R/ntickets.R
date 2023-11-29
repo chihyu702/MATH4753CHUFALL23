@@ -10,7 +10,8 @@
 #' @importFrom pnorm
 #' @importFrom stats uniroot
 #' @importFrom graphics abline
-#' @return  number of seats sold(nd is calculated by the discrete distribution and nc is calculated by the discrete distribution )
+#' @return  number of seats sold
+#'          (nd is calculated by the discrete distribution and nc is calculated by the discrete distribution )
 #' @export
 #'
 #' @examples ntickets(200, 0.02, 0.95)

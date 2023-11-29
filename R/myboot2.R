@@ -1,7 +1,9 @@
 #' myboot2
 #'
+#' bootstrap analysis on a given dataset
+#'
 #' @param x the data
-#' @param fun function using/ the value we want to calculate
+#' @param fun function using/the value we want to calculate
 #' @param iter number of iterations
 #' @param alpha bootstrap interval
 #' @param cx size of the text in the graph

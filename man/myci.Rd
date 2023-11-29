@@ -7,8 +7,8 @@
 myci(x)
 }
 \arguments{
-\item{x}{}
+\item{x}{vector}
 }
 \description{
-myci
+Calculate 95% Confidence Interval for the Mean
 }

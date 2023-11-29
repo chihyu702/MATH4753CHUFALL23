@@ -4,13 +4,15 @@
 \alias{logbin}
 \title{logbin}
 \usage{
-logbin(x, param)
+logbin(x = c(3, 3, 4, 3, 4, 5, 5, 4), param = seq(0, 1, length = 1000))
 }
 \arguments{
-\item{param}{}
+\item{x}{vector}
+
+\item{param}{the probability of success in a single trial.}
 }
 \description{
-logbin
+natural logarithm of binomial probabilities
 }
 \examples{
 logbin(x=c(9,9,1,9,9,9),param=seq(0,1,length=1000))

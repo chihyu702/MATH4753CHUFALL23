@@ -7,11 +7,22 @@
 mymaxlik(lfun, x, param, ...)
 }
 \arguments{
-\item{...}{}
+\item{lfun}{the likelihood function}
+
+\item{x}{vector of the observe data}
+
+\item{param}{A numeric vector of parameter values over which the likelihood
+function will be evaluated}
+
+\item{...}{additional parameters}
+}
+\value{
+list relate to the MLE
 }
 \description{
 maximum likelihood function for repeated sampling from same distribution
 }
 \examples{
-mymaxlik(x=c(9,9,1,9,9,9),param=seq(0,1,length=1000),lfun=logbin,xlab=expression(pi),main="Binomial",cex.main=2)
+mymaxlik(x=c(9,9,1,9,9,9),param=seq(0,1,length=1000),
+          lfun=logbin,xlab=expression(pi),main="Binomial",cex.main=2)
 }

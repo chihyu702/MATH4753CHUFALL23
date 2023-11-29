@@ -9,7 +9,7 @@ myboot2(x, fun = "mean", iter = 10000, alpha = 0.05, cx = 1.5, xlab = fun, ...)
 \arguments{
 \item{x}{the data}
 
-\item{fun}{function using/ the value we want to calculate}
+\item{fun}{function using/the value we want to calculate}
 
 \item{iter}{number of iterations}
 
@@ -25,7 +25,7 @@ myboot2(x, fun = "mean", iter = 10000, alpha = 0.05, cx = 1.5, xlab = fun, ...)
 A list containing the calculated bootstrap interval, the function used, the input data, and the vector of bootstrap statistics.
 }
 \description{
-myboot2
+bootstrap analysis on a given dataset
 }
 \examples{
 myboot2(iter = 10000, x=rnorm(50), fun = "mean", alpha = 0.05, xlab = "mean")

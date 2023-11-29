@@ -14,7 +14,8 @@ ntickets(N, gamma, p)
 \item{p}{probability of a passenger will show}
 }
 \value{
-number of seats sold(nd is calculated by the discrete distribution and nc is calculated by the discrete distribution )
+number of seats sold
+         (nd is calculated by the discrete distribution and nc is calculated by the discrete distribution )
 }
 \description{
 Trying to find the optimization number of ticket to sell to avoid overbooking problem

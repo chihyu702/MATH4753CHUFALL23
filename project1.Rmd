@@ -1,0 +1,88 @@
+---
+title: "Project1"
+author: "Chih-Yu"
+date: "`r Sys.Date()`"
+output: 
+   html_document:
+    toc: yes
+    toc_float: yes
+    theme: spacelab
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Function Body
+```{r}
+ntickets <- function(N, gamma, p) {
+  
+  # Define the discrete objective function
+  Discrete <- function(n, N, gamma, p) {
+  1 - gamma - pbinom(N, n, p)
+  }
+
+  # Generate a sequence of possible nd
+  # nd must greater than N, so set sequence from N to 1.1N, increasing by 1
+  nValue <- seq(N , N *1.1, by = 1)
+  # plug nValue to discrete objective function and get a sequence objectiveD 
+  objectiveD <- sapply(nValue, function(n) Discrete(n, N, gamma, p))
+  # find the absolute minimum value, which is nd
+  nd <- nValue[which.min(abs(objectiveD))]
+  
+  # Create the plot
+  # x=possible nd = nValue, y=objectiveD
+  titleD <- paste0("Objective Vs n (Discrete Case) to find optimal tickets sold\n
+  (", nd, ")gamma=", gamma, " N=", N, "p=",p)
+  plot(nValue, objectiveD, type="b", pch=20, 
+       xlab="n", ylab="Objective", main=titleD)
+  # horizontal line
+  abline(h=0, col="Red")
+  # Vertical line
+  abline(v=nd, col="Red", lty=2)
+  
+  
+  # Define the normal approximation (continuous)
+  Continuous <- function(n, N, gamma, p) {
+    (1-gamma)-pnorm(N+0.5, mean = n*p, sd = sqrt(n*p*(1-p)))
+  }
+  # Generate a sequence of possible nc
+  nValue <- seq(N , N *1.1)
+  # plug nValue to discrete objective function and get a sequence objectiveC 
+  objectiveC <- sapply(nValue, function(n) Continuous(n,N, gamma, p))
+  # Find root for continuous objective function, which is nc
+  nc <- uniroot(function(n) Continuous(n, N, gamma, p), interval = c(N, 1.1*N))$root
+  
+  # Create the plot
+  # x=possible nc = nValue, y=objectiveC
+  titleC <- paste0("Objective Vs n (Continuous Case) to find optimal tickets sold\n 
+                   (nc=", nc, ") gamma=", gamma, " N=", N, "p=", p)
+  plot(nValue,objectiveC, 
+       type ="l",
+       xlab="n", ylab="Objective", main=titleC)
+  # horizontal line
+  abline(h=0, col="Blue")
+  # Vertical line
+  abline(v=nc, col="Blue", lty=2)
+  
+
+  # Creating the named list
+  result <- list(nd = nd, nc = nc, N = N, p = p, gamma = gamma)
+
+  # Return the result
+  return(result)
+}
+```
+# Test the funtion
+```{r}
+# Test the function
+result <- ntickets(400, 0.02, 0.95)
+print(result)
+```
+
+# Test the package
+```{r}
+MATH4753CHUFALL2023::ntickets(200,0.02, 0.95)
+```
+
+
